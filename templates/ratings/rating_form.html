@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Rate Recipe</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Star rating input -->
+    <div class="star-rating">
+        {% for i in "54321" %}
+            <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+            <label for="star{{ i }}">★</label>
+        {% endfor %}
+    </div>
+
+    <button type="submit">Submit Rating</button>
+</form>
+
+<style>
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 2rem;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+.star-rating input:checked ~ label {
+    color: #f5b301; /* gold stars */
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+</style>
+{% endblock %}

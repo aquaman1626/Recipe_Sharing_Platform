@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load rating_extras %}
+
+{% block content %}
+<h1>All Recipes</h1>
+
+<ul>
+{% for recipe in recipes %}
+    <li>
+        <h3><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.title }}</a></h3>
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" width="200">
+        {% endif %}
+        <p>{{ recipe.description|truncatewords:20 }}</p>
+
+        <!-- Show average rating -->
+        {% if recipe.average_rating %}
+            <p>{{ recipe.average_rating|stars }} ({{ recipe.average_rating }} / 5)</p>
+        {% else %}
+            <p>No ratings yet</p>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

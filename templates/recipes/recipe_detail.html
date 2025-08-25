@@ -1,0 +1,17 @@
+{% load rating_extras %}
+
+<h2>{{ recipe.title }}</h2>
+<p>{{ recipe.description }}</p>
+{% if recipe.image %}
+    <img src="{{ recipe.image.url }}" width="400">
+{% endif %}
+
+<h3>Average Rating:</h3>
+{% if recipe.average_rating %}
+    <p>{{ recipe.average_rating }} / 5</p>
+    <p>{{ recipe.average_rating|stars }}</p>
+{% else %}
+    <p>No ratings yet</p>
+{% endif %}
+
+<a href="{% url 'rate-recipe' recipe.id %}">Rate this recipe</a>
