@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+env/
+
+# Database
+db.sqlite3
+
+# Sensitive Configuration
+local_settings.py
+.env
+
+# Compiled Python Files
+*.pyc
+__pycache__/
+
+# Media Files
+media/
+
+# IDE/Editor Specific Files
+.idea/
+.vscode/
+.DS_Store
+
+# Log Files
+*.log
